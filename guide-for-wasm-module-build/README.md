@@ -5,21 +5,21 @@ This guide outlines the process of building a Cosmos chain binary with a **stati
 > [!Note]
 >
 > ## What is a Static-Linked Library?
-> 
+>
 > When building a binary using standard build commands like the one below:
-> 
+>
 > ```shell
 > go build -tags "netgo" -ldflags '-X github.com/cosmos/cosmos-sdk/version.Name=junction -X github.com/cosmos/cosmos-sdk/version.AppName=junctiond -X github.com/cosmos/cosmos-sdk/version.Version=0.2.0-17-g43c85e1 -X github.com/cosmos/cosmos-sdk/version.Commit=43c85e16f0271a44442b71b4b64e27a29f7048a5 -X "github.com/cosmos/cosmos-sdk/version.BuildTags=netgo" -X github.com/tendermint/tendermint/version.TMCoreSemVer=v0.38.6' -o ./build/junctiond ./cmd/junctiond
 > ```
-> 
+>
 > The resulting binary depends on shared libraries. You can verify this by running:
-> 
+>
 > ```shell
 > ldd ./build/junctiond
 > ```
-> 
+>
 > This command lists all shared libraries the binary depends on. If you transfer this binary to another system, it won’t run unless those shared libraries are also installed.
-> 
+>
 > **Solution:** Use static linking to build a binary with all dependencies included.
 
 ---
@@ -59,7 +59,6 @@ crate-type = ["cdylib", "rlib", "staticlib"]
 Run the following commands to build the static library:
 
 ```bash
-cd libwasmvm
 make build-rust
 ```
 
