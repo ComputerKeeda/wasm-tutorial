@@ -1,0 +1,43 @@
+diff --git a/commit.txt b/commit.txt
+new file mode 100644
+index 0000000..e69de29
+diff --git a/guide-for-wasm-module-build/README.md b/guide-for-wasm-module-build/README.md
+index e673811..fb87233 100644
+--- a/guide-for-wasm-module-build/README.md
++++ b/guide-for-wasm-module-build/README.md
+@@ -62,10 +62,11 @@ Run the following commands to build the static library:
+ make build-rust
+ ```
+ 
+-This generates a `libwasmvm.a` file in the `libwasmvm/target/release/` directory. Rename the file:
++This generates a `libwasmvm.a` file in the `libwasmvm/target/release/` directory. Duplicate the file with the architecture suffix:
+ 
+ ```bash
+-mv libwasmvm.a libwasmvm.x86_64.a
++cd libwasmvm/target/release/ ;
++cp libwasmvm.a libwasmvm.x86_64.a
+ ```
+ 
+ ---
+@@ -76,12 +77,12 @@ mv libwasmvm.a libwasmvm.x86_64.a
+ 
+ Modify your Cosmos chain project’s Makefile to use the `libwasmvm.x86_64.a` file for static linking.
+ 
+-#### Install Required Libraries
++#### Install Required Library
+ 
+-Install the following libraries:
++Install the following library:
+ 
+ ```bash
+-sudo apt install musl musl-dev musl-tools libc6-dev
++sudo apt install libc6-dev
+ ```
+ 
+ #### Add Static Linking Flags
+@@ -98,4 +99,4 @@ Replace `/path/to/your/wasmvm/` with the actual path to your `libwasmvm.x86_64.a
+ 
+ ### Step 4: Build the Cosmos Chain Binary
+ 
+-Run the build command to create the static binary.
++Build your project to create the binary with static linking.
