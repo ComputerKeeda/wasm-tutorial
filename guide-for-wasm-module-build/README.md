@@ -2,7 +2,7 @@
 
 This guide outlines the process of building a Cosmos chain binary with a **statically linked library**, ensuring compatibility and portability across different environments.
 
-> [Note]
+> [!Note]
 >
 > ## What is a Static-Linked Library?
 > 
